@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html class="dark" lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Шинный центр «Колесо» | Канаш, ул. Полевая, 12 — Шины, литые диски и шиномонтаж (Рейтинг 4.8)</title>
+  <meta name="description" content="Шинный центр и шиномонтаж «Колесо» на Полевой 12 в Канаше. Более 150 моделей литых дисков в наличии, новые шины, лазерная балансировка, правка дисков. Рейтинг 4.8. Тел: +7 (937) 395-19-55."/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            bgMain: '#080B11',
+            bgContainer: '#0F1523',
+            bgContainerLow: '#0A0E18',
+            bgContainerHigh: '#151D2F',
+            accent: '#2563EB',
+            accentHover: '#38BDF8',
+            statusOk: '#2563EB',
+            border: '#1E293B',
+            borderHover: 'rgba(56, 189, 248, 0.35)',
+            textMain: '#FFFFFF',
+            textMuted: '#94A3B8',
+            textDim: '#64748B'
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Monochrome Precision Stylesheet -->
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-bgMain text-textMain font-sans antialiased selection:bg-accent selection:text-white bg-tech-grid">
+
+  <!-- TOP TELEMETRY STRIP -->
+  <aside class="bg-bgContainerLow border-b border-border text-xs font-mono py-2 px-4 select-none">
+    <div class="max-w-[1380px] mx-auto flex flex-wrap items-center justify-between gap-3 text-textMuted">
+      <div class="flex items-center gap-4 flex-wrap">
+        <div class="flex items-center gap-2" id="serviceStatusIndicator">
+          <span class="live-pulse-dot"></span>
+          <span class="text-statusOk font-bold">СЕЙЧАС ОТКРЫТО</span>
+          <div class="telemetry-equalizer" title="Телеметрия постов активна">
+            <span class="telemetry-bar"></span>
+            <span class="telemetry-bar"></span>
+            <span class="telemetry-bar"></span>
+            <span class="telemetry-bar"></span>
+          </div>
+          <span class="text-textDim">08:00–18:00</span>
+        </div>
+        <span class="text-border hidden sm:inline">|</span>
+        <div class="hidden md:flex items-center gap-2">
+          <span class="material-symbols-outlined text-accent text-sm">schedule</span>
+          <span>ВРЕМЯ НА СЕРВИСЕ: <strong class="text-white" id="liveClock">--:--:--</strong></span>
+        </div>
+        <span class="text-border hidden lg:inline">|</span>
+        <div class="hidden lg:flex items-center gap-1.5 text-textDim">
+          <span class="material-symbols-outlined text-sm text-accent">location_on</span>
+          <span data-bind="brand.address">г. Канаш, ул. Полевая, д. 12</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs">
+        <div class="flex items-center gap-1.5 bg-bgContainer border border-border px-2.5 py-0.5 rounded">
+          <span class="material-symbols-outlined text-amber-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+          <span class="text-white font-bold" data-bind="brand.rating">4.8</span>
+          <span class="text-textDim">(Яндекс Карты • <span data-bind="brand.reviewsCount">67 отзывов</span>)</span>
+        </div>
+        <a href="tel:+79373951955" data-bind="contacts.phonePrimary" class="text-accent hover:underline font-bold hidden sm:inline-flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">call</span> +7 (937) 395-19-55
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN NAVIGATION HEADER -->
+  <header class="sticky top-0 z-50 bg-bgMain/95 backdrop-blur border-b border-border transition-all">
+    <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Identity -->
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+        <div class="w-10 h-10 rounded border border-border bg-bgContainer overflow-hidden flex items-center justify-center p-1 group-hover:border-accent transition-colors shadow-sm shrink-0">
+          <img src="images/logo.svg" alt="Логотип Колесо" class="w-full h-full object-contain" onerror="this.style.display='none';"/>
+        </div>
+        <div class="flex flex-col min-w-0">
+          <span class="font-bold text-sm sm:text-xl tracking-tight text-white group-hover:text-accent transition-colors uppercase font-mono leading-none" data-bind="brand.shortName">
+            КОЛЕСО
+          </span>
+          <span class="text-[10px] text-accent font-mono tracking-widest uppercase mt-0.5">ШИННЫЙ ЦЕНТР</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-textMuted">
+        <a href="#services" class="hover:text-accent transition-colors py-1">Услуги</a>
+        <a href="#radar" class="hover:text-accent text-accent font-bold transition-colors py-1 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Калькулятор
+        </a>
+        <a href="#standards" class="hover:text-accent transition-colors py-1">Стандарты</a>
+        <a href="#reviews" class="hover:text-accent transition-colors py-1">Отзывы (4.8)</a>
+        <a href="#location" class="hover:text-accent transition-colors py-1">Контакты</a>
+      </nav>
+
+      <!-- Action Buttons & Channels -->
+      <div class="flex items-center gap-3">
+        <a data-bind="contacts.whatsapp" href="https://wa.me/79373951955" target="_blank" class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded border border-border bg-bgContainer text-accent hover:border-accent hover:bg-accent/10 transition-colors" title="Написать в WhatsApp">
+          <span class="material-symbols-outlined text-lg text-accent">chat</span>
+        </a>
+        <a data-bind="contacts.telegram" href="https://t.me/89373951955" target="_blank" class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded border border-border bg-bgContainer text-accent hover:border-accent hover:bg-accent/10 transition-colors" title="Telegram-канал">
+          <span class="material-symbols-outlined text-lg text-accent">send</span>
+        </a>
+        <a href="#radar" class="hidden sm:inline-flex btn-precision-white text-xs py-2.5 px-5 offset-box-accent items-center gap-1.5">
+          <span class="material-symbols-outlined text-sm text-accent">build</span>
+          Рассчитать комплекс
+        </a>
+        <!-- Mobile hamburger -->
+        <button id="mobileMenuBtn" aria-label="Открыть меню" class="lg:hidden w-10 h-10 aspect-square flex items-center justify-center text-accent hover:text-white border border-border rounded bg-bgContainer hover:border-accent/50 transition-colors shadow-sm shrink-0">
+          <span class="material-symbols-outlined text-xl text-accent leading-none">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileNav" class="hidden lg:hidden bg-bgContainer border-b border-border px-4 py-4 space-y-3 font-mono text-xs uppercase">
+      <a href="#services" class="block py-2 text-white hover:text-accent">Услуги техцентра</a>
+      <a href="#radar" class="block py-2 text-accent font-bold flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Интерактивный калькулятор ТО
+      </a>
+      <a href="#standards" class="block py-2 text-white hover:text-accent">Стандарты честного шинного сервиса</a>
+      <a href="#reviews" class="block py-2 text-white hover:text-accent">Отзывы Яндекс Карт (4.7)</a>
+      <a href="#location" class="block py-2 text-white hover:text-accent">Контакты и карта проезда</a>
+      <div class="pt-2 border-t border-border flex items-center justify-between">
+        <a data-bind="contacts.phonePrimary" href="tel:+79373951955" class="text-accent font-bold py-2 flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-base">call</span> +7 (937) 395-19-55
+        </a>
+        <div class="flex items-center gap-2">
+          <a data-bind="contacts.whatsapp" href="https://wa.me/79373951955" target="_blank" class="text-textMuted hover:text-white p-1.5 border border-border rounded">WA</a>
+          <a data-bind="contacts.telegram" href="https://t.me/89373951955" target="_blank" class="text-textMuted hover:text-white p-1.5 border border-border rounded">TG</a>
+        </div>
+      </div>
+      <div class="pt-1">
+        <a href="#radar" class="w-full btn-precision-white text-xs py-3 px-4 offset-box-accent flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-sm text-accent">build</span>
+          Рассчитать комплекс
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="w-full relative overflow-hidden">
+    <div class="ambient-glow-hero"></div>
+    
+    <!-- HERO SECTION: MONOCHROME EDITORIAL PRECISION WITH ACCENT FOCUS -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 border-b border-border">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Hero Left Info -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
+            <span class="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 px-3 py-1 text-accent uppercase font-bold rounded-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+              АВТОТЕХЦЕНТР & ЗАПЧАСТИ // КАНАШ
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-bgContainer border border-border px-3 py-1 text-textMuted uppercase rounded-sm">
+              <span class="material-symbols-outlined text-amber-400 text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+              РЕЙТИНГ: 5.0 (81 ОТЗЫВ)
+            </span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05] text-white">
+            Абсолютная точность обслуживания. <br/>
+            <span class="text-accent">Автосервис и запчасти</span> в одном месте.
+          </h1>
+
+          <p class="text-base sm:text-lg text-textMuted max-w-2xl leading-relaxed">
+            Прозрачный регламентный ремонт и ТО для иномарок и отечественных авто в Канаше. 
+            Компьютерная диагностика на дилерских сканерах, собственный склад 8 000+ запчастей прямо при сервисе и фиксированная гарантия Гарантия сезона.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#radar" class="btn-precision-white text-xs uppercase px-7 py-4 offset-box-accent">
+              Рассчитать комплекс
+              <span class="material-symbols-outlined text-base text-accent">arrow_forward</span>
+            </a>
+            <a href="#services" class="btn-precision-ghost text-xs uppercase px-6 py-4">
+              Все услуги и цены
+            </a>
+          </div>
+
+          <!-- Metrics Row -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-border mt-2" id="metricsGrid">
+            <!-- Dynamically populated from JSON -->
+          </div>
+        </div>
+
+        <!-- Hero Right: Official Brand Visual -->
+        <div class="lg:col-span-5 relative tilt-perspective-container">
+          <div class="tilt-inner relative w-full aspect-[16/10] sm:aspect-[4/3] rounded border border-border bg-bgContainer overflow-hidden shadow-2xl hero-image-frame">
+            <img src="images/cover.jpg" alt="Автосервис на Чкалова Канаш" class="w-full h-full object-cover filter brightness-95 contrast-105"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-bgMain via-transparent to-transparent opacity-80"></div>
+            
+            <!-- Bottom Telemetry HUD overlay -->
+            <div class="absolute bottom-4 left-4 right-4 hud-glass-badge p-4 rounded font-mono text-xs flex justify-between items-center">
+              <div>
+                <span class="text-white font-bold block flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                  ЧКАЛОВА, 2
+                </span>
+                <span class="text-textDim text-[11px]">Диагностика • Масло • Подвеска • Стёкла</span>
+              </div>
+              <a href="tel:+79373951955" class="btn-precision-white text-[11px] py-1.5 px-3">
+                Позвонить
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ORIGINAL STANDOUT BLOCK: INTERACTIVE MILEAGE RADAR & SERVICE MATRIX -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-border reveal-init" id="radar">
+      <div class="mb-10">
+        <div class="inline-flex items-center gap-2 font-mono text-xs text-accent uppercase tracking-widest bg-accent/10 border border-accent/30 px-3 py-1 mb-3 rounded-sm">
+          <span class="live-pulse-dot-accent"></span>
+          ОНЛАЙН-РЕГЛАМЕНТ ОБСЛУЖИВАНИЯ
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white" data-bind="mileageRadar.title">
+          Интерактивный радар ТО по пробегу
+        </h2>
+        <p class="text-sm sm:text-base text-textMuted max-w-2xl mt-2" data-bind="mileageRadar.subtitle">
+          Выберите класс вашего автомобиля и пройденный километраж. Система сформирует заводской перечень процедур, 
+          рассчитает фиксированную цену и позволит забронировать свободный пост в 1 клик.
+        </p>
+      </div>
+
+      <!-- Radar Main Container -->
+      <div class="radar-panel p-6 sm:p-8 relative">
+        
+        <!-- Rotating Technical Radar Reticle Watermark -->
+        <svg class="radar-reticle-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="95" stroke="#FFFFFF" stroke-width="0.8" stroke-dasharray="3 3"/>
+          <circle cx="100" cy="100" r="75" stroke="#2563EB" stroke-width="0.6"/>
+          <circle cx="100" cy="100" r="50" stroke="#FFFFFF" stroke-width="0.8" stroke-dasharray="2 4"/>
+          <circle cx="100" cy="100" r="25" stroke="#2563EB" stroke-width="0.5"/>
+          <line x1="100" y1="0" x2="100" y2="200" stroke="#FFFFFF" stroke-width="0.6" stroke-dasharray="2 4"/>
+          <line x1="0" y1="100" x2="200" y2="100" stroke="#FFFFFF" stroke-width="0.6" stroke-dasharray="2 4"/>
+          <path d="M100 5 L105 15 L95 15 Z" fill="#2563EB"/>
+          <path d="M195 100 L185 105 L185 95 Z" fill="#2563EB"/>
+        </svg>
+
+        <!-- Controls: Car Class Selector -->
+        <div class="mb-6 relative z-10">
+          <label class="block font-mono text-xs uppercase text-textDim tracking-wider mb-2.5">
+            ШАГ 1 // ДИАМЕТР И ТИП ДИСКОВ
+          </label>
+          <div class="flex flex-wrap gap-2.5" id="radarCarClasses">
+            <!-- Dynamically populated from JSON -->
+          </div>
+        </div>
+
+        <!-- Controls: Stepper for Checkpoints -->
+        <div class="mb-8 relative z-10">
+          <label class="block font-mono text-xs uppercase text-textDim tracking-wider mb-2.5">
+            ШАГ 2 // ПРОЙДЕННЫЙ КИЛОМЕТРАЖ (ТОЧКА РЕГЛАМЕНТА)
+          </label>
+          <div class="stepper-progress-track">
+            <div class="stepper-progress-fill" id="stepperProgressFill" style="width: 25%;"></div>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="radarStepper">
+            <!-- Dynamically populated from JSON -->
+          </div>
+        </div>
+
+        <!-- Output: Maintenance Matrix & Booking Calculation -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-6 border-t border-border">
+          
+          <!-- Left: Checklist of operations -->
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs uppercase tracking-wider text-textDim">
+                РЕГЛАМЕНТНЫЕ ОПЕРАЦИИ ЗАВОДА-ИЗГОТОВИТЕЛЯ:
+              </span>
+              <span class="font-mono text-xs text-accent font-bold" id="radarBadge">
+                Базовое ТО-1 • 15 000 км
+              </span>
+            </div>
+
+            <!-- Operations list container -->
+            <div class="space-y-2.5" id="radarChecklist">
+              <!-- Dynamically populated by mileage-radar.js -->
+            </div>
+          </div>
+
+          <!-- Right: Summary Docket Calculation -->
+          <div class="lg:col-span-5 bg-bgContainerLow border border-border p-4 sm:p-6 rounded font-mono">
+            <div class="pb-4 border-b border-dashed border-border space-y-1">
+              <span class="text-[10px] text-accent uppercase font-bold tracking-widest block flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+                РАСЧЕТНЫЙ НАРЯД «КОЛЕСО»-2026
+              </span>
+              <h4 class="text-base font-bold text-white" data-bind="brand.name">Шинный центр «Колесо»</h4>
+              <p class="text-[11px] text-textDim" id="radarSummaryText">Класс: Отечественные • Регламент 15 000 км</p>
+            </div>
+
+            <div class="py-4 border-b border-dashed border-border space-y-2.5 text-xs">
+              <div class="flex justify-between items-center text-textMuted">
+                <span>Время обслуживания:</span>
+                <strong class="text-white font-bold" id="radarHours">18 мин</strong>
+              </div>
+              <div class="flex justify-between items-center text-textMuted">
+                <span>Материалы и расходники:</span>
+                <span class="text-statusOk font-bold">В наличии на складе</span>
+              </div>
+              <div class="flex justify-between items-center text-textMuted">
+                <span>Гарантия на работы:</span>
+                <span class="text-white font-bold">12 месяцев</span>
+              </div>
+            </div>
+
+            <div class="pt-4 pb-6 flex justify-between items-baseline">
+              <span class="text-xs uppercase text-textDim font-bold">Итого работа:</span>
+              <span class="text-3xl font-extrabold text-accent transition-all duration-150" id="radarPrice">1 600 ₽</span>
+            </div>
+
+            <div class="space-y-2.5">
+              <a id="radarWhatsappBtn" href="#" target="_blank" class="w-full btn-precision-white text-xs uppercase py-3 sm:py-3.5 px-3 sm:px-4 rounded text-center flex items-center justify-center gap-2 offset-box-accent">
+                <span class="material-symbols-outlined text-base text-accent shrink-0">chat</span>
+                <span class="font-bold whitespace-nowrap">Записаться в WhatsApp</span>
+              </a>
+              <a id="radarTelegramBtn" href="#" target="_blank" class="w-full btn-precision-ghost text-xs uppercase py-3 px-3 sm:px-4 rounded text-center flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-base text-accent shrink-0">send</span>
+                <span class="whitespace-nowrap">Написать в Telegram</span>
+              </a>
+              <a href="tel:+79373951955" data-bind="contacts.phonePrimary" class="w-full text-center text-textDim hover:text-white text-[11px] py-1 flex items-center justify-center gap-1.5 transition-colors whitespace-nowrap">
+                <span class="material-symbols-outlined text-xs text-accent shrink-0">call</span>
+                <span>Прямой звонок: <strong class="text-white font-bold">+7 (937) 395-19-55</strong></span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORE SERVICES BENTO GRID -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-border reveal-init" id="services">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-xs text-accent uppercase tracking-widest block mb-2">Услуги и цены</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white">
+            Услуги шинного центра и магазина
+          </h2>
+        </div>
+        <p class="text-sm text-textMuted max-w-md">
+          Продажа литых и кованых дисков, новые шины с гарантией, сезонный шиномонтаж, правка дисков и дошиповка.
+        </p>
+      </div>
+
+      <!-- Services Grid Container -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
+        <!-- Dynamically populated from JSON by engine.js -->
+      </div>
+    </section>
+
+    <!-- STANDARDS OF SERVICE SECTION -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-border reveal-init" id="standards">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-xs text-accent uppercase tracking-widest block mb-2 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Прозрачный регламент
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white">
+            Стандарты честного сервиса
+          </h2>
+        </div>
+        <p class="text-sm text-textMuted max-w-md">
+          Никаких навязанных услуг и скрытых переплат. Прозрачные правила работы, подтвержденные сотнями отзывов клиентов.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="standardsGrid">
+        <!-- Dynamically populated from JSON by engine.js -->
+      </div>
+    </section>
+
+    <!-- VERIFIED REVIEWS SECTION (YANDEX MAPS 5.0) -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-border reveal-init" id="reviews">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-xs text-accent uppercase tracking-widest block mb-2">Честная репутация</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white">
+            Отзывы клиентов (Рейтинг 4.8)
+          </h2>
+        </div>
+        <div class="inline-flex items-center gap-2.5 sm:gap-3 bg-bgContainer border border-border px-3.5 py-2 sm:px-5 sm:py-3 rounded self-start shrink-0 flex-nowrap">
+          <div class="flex text-amber-400 text-xs sm:text-sm tracking-wider shrink-0 select-none">
+            ★★★★★
+          </div>
+          <span class="font-bold text-base sm:text-xl text-white whitespace-nowrap shrink-0">
+            4.8 <span class="text-textDim text-xs sm:text-sm font-normal">/ 5.0</span>
+          </span>
+          <span class="font-mono text-[11px] sm:text-xs text-textDim whitespace-nowrap shrink-0">
+            (67 отзывов)
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="reviewsGrid">
+        <!-- Dynamically populated from JSON by engine.js -->
+      </div>
+    </section>
+
+    <!-- LOCATION & CONTACT SECTION -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-init" id="location">
+      <div class="space-y-6">
+        <span class="font-mono text-xs text-accent uppercase tracking-widest block flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+          Ждём вас на ТО
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white">
+          Как проехать в шинный центр
+        </h2>
+        <p class="text-sm sm:text-base text-textMuted leading-relaxed">
+          Шинный центр «Колесо» расположен по адресу ул. Полевая, 12 в Канаше. Удобная парковка перед магазином и быстрый заезд в монтажный бокс. Красноармейская в Канаше. Удобный широкий заезд и асфальтированная парковка. 
+          Удобный заезд с асфальтированной парковкой и зоной ожидания для клиентов.
+        </p>
+
+        <div class="space-y-3.5 pt-2 font-mono">
+          <div class="flex items-center gap-4 bg-bgContainer border border-border p-4 rounded">
+            <span class="material-symbols-outlined text-accent text-2xl">location_on</span>
+            <div>
+              <span class="text-[10px] text-textDim block uppercase">Адрес техцентра</span>
+              <span class="text-white font-bold text-sm" data-bind="brand.address">Чувашия, г. Канаш, ул. Полевая, д. 12</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 bg-bgContainer border border-border p-4 rounded">
+            <span class="material-symbols-outlined text-accent text-2xl">schedule</span>
+            <div>
+              <span class="text-[10px] text-textDim block uppercase">Режим работы</span>
+              <span class="text-white font-bold text-sm" data-bind="brand.workHours">Пн–Сб: 08:00 – 18:00 • Вс: 08:00 – 16:00</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 bg-bgContainer border border-border p-4 rounded">
+            <span class="material-symbols-outlined text-accent text-2xl">call</span>
+            <div>
+              <span class="text-[10px] text-textDim block uppercase">Телефон для записи</span>
+              <a href="tel:+79373951955" data-bind="contacts.phonePrimary" class="text-accent text-base font-bold hover:underline block">
+                +7 (937) 395-19-55
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map & Directions Frame -->
+      <div class="relative">
+        <div class="aspect-[4/3] rounded border border-border bg-bgContainer overflow-hidden relative shadow-2xl">
+          <iframe 
+            src="https://yandex.ru/map-widget/v1/?ll=47.472211%2C55.514646&z=17&pt=47.472211,55.514646,pm2rdm" 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            allowfullscreen="true"
+            class="filter contrast-125 saturate-50 opacity-80 hover:opacity-100 transition-opacity"
+            title="Яндекс Карта — Канаш, ул. Чкалова, 2">
+          </iframe>
+          <div class="absolute bottom-4 left-4 right-4 hud-glass-badge p-4 rounded flex justify-between items-center">
+            <div>
+              <span class="font-bold text-white block text-sm" data-bind="brand.name">Шинный центр «Колесо»</span>
+              <span class="font-mono text-xs text-accent">УЛ. ПОЛЕВАЯ, 12</span>
+            </div>
+            <a href="https://yandex.ru/maps/org/213703135316" target="_blank" class="btn-precision-white text-xs uppercase py-2 px-3">
+              Маршрут
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MONOCHROME FOOTER -->
+  <footer class="bg-bgContainerLow border-t border-border py-12 font-mono text-xs">
+    <div class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded border border-border bg-bgContainer overflow-hidden flex items-center justify-center p-0.5">
+          <img src="images/logo.svg" alt="Логотип Колесо" class="w-full h-full object-cover rounded-sm"/>
+        </div>
+        <span class="font-bold text-base text-white tracking-wider uppercase font-mono" data-bind="brand.shortName">КОЛЕСО</span>
+        <span class="text-textDim text-xs hidden sm:inline">• КАНАШ, ПОЛЕВАЯ, 12</span>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 text-textMuted">
+        <a href="#services" class="hover:text-accent transition-colors">Услуги</a>
+        <a href="#radar" class="hover:text-accent transition-colors">Радар ТО</a>
+        <a href="#standards" class="hover:text-accent transition-colors">Стандарты</a>
+        <a href="#reviews" class="hover:text-accent transition-colors">Отзывы (4.7)</a>
+        <a href="tel:+79373951955" class="text-accent hover:underline font-bold">+7 (937) 395-19-55</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fallback Embedded Data & Scripts -->
+  <script>
+    window.FALLBACK_SERVICE_DATA = {
+  "brand": {
+    "name": "Автосервис на Чкалова",
+    "shortName": "КОЛЕСО",
+    "fullName": "Автосервис и 3D сход-развал на ул. Чкалова, 2",
+    "city": "Канаш",
+    "region": "Чувашская Республика",
+    "address": "ул. Чкалова, д. 2",
+    "tagline": "3D Сход-развал, ремонт АКПП/ДВС и регламентное ТО",
+    "subtagline": "Огромный выставочный зал дисков на Полевой 12, новые шины от ведущих заводов, балансировка с защитой датчиков TPMS и правка дисков.",
+    "rating": 4.7,
+    "reviewsCount": 93,
+    "establishedYear": 2021,
+    "workHours": "Пн–Вс: 08:00 – 19:00 • Без выходных",
+    "workHoursShort": "08:00 – 19:00",
+    "warrantyMonths": 12
+  },
+  "contacts": {
+    "phonePrimary": "+7 (937) 395-19-55",
+    "phonePrimaryRaw": "+79276684838",
+    "phoneSecondary": "+7 (937) 395-19-55",
+    "phoneSecondaryRaw": "+79276684838",
+    "telegram": "https://t.me/89373951955",
+    "telegramDirect": "https://t.me/89373951955",
+    "whatsapp": "https://wa.me/79373951955",
+    "vk": "https://vk.com/club222432123",
+    "yandexMap": "https://yandex.ru/maps/org/113048073364"
+  },
+  "colors": {
+    "accent": "#2563EB",
+    "accentHover": "#4ADE80",
+    "bgMain": "#090C0A",
+    "bgContainer": "#101612",
+    "bgContainerLow": "#0B100D",
+    "bgContainerHigh": "#16201A",
+    "border": "#1E2B22",
+    "borderHover": "rgba(74, 222, 128, 0.35)",
+    "textMain": "#FFFFFF",
+    "textMuted": "#9CA8A0",
+    "textDim": "#637267"
+  },
+  "metrics": [
+    { "label": "Рейтинг на Яндекс Картах", "value": "4.7", "sub": "93 проверенных отзыва" },
+    { "label": "Стенд сход-развала", "value": "3D", "sub": "Лазерная калибровка углов" },
+    { "label": "Специализация агрегатов", "value": "АКПП / ДВС", "sub": "Ремонт любой сложности" },
+    { "label": "Режим работы", "value": "7 ДНЕЙ", "sub": "Ежедневно с 08:00 до 19:00" }
+  ],
+  "services": [
+    {
+      "id": "alignment",
+      "category": "repair",
+      "title": "3D Сход-развал колес",
+      "price": 1200,
+      "pricePrefix": "от",
+      "duration": "30 мин",
+      "badge": "ЛАЗЕРНЫЙ СТЕНД",
+      "desc": "Высокоточная калибровка углов установки передних и задних колес на компьютерном 3D-стенде. Устранение увода машины в сторону, неравномерного износа шин и восстановление прямолинейного выката.",
+      "points": [
+        "Измерение геометрии подвески на 3D-мишенях",
+        "Регулировка схождения и развала колес",
+        "Калибровка нулевого положения датчика руля",
+        "Выдача распечатки параметров до и после регулировки"
+      ]
+    },
+    {
+      "id": "transmission",
+      "category": "repair",
+      "title": "Ремонт АКПП, вариаторов и КПП",
+      "price": 4500,
+      "pricePrefix": "от",
+      "duration": "от 2 ч",
+      "badge": "АГРЕГАТНЫЙ ПОСТ",
+      "desc": "Комплексная дефектовка, ремонт гидроблоков, замена пакетов фрикционов, соленоидов и планетарных рядов в автоматических и механических коробках передач всех марок.",
+      "points": [
+        "Компьютерное считывание давления и ошибок трансмиссии",
+        "Демонтаж, дефектовка и промывка гидроблока",
+        "Аппаратная промывка контура охлаждения АКПП",
+        "Адаптация переключения передач после ремонта"
+      ]
+    },
+    {
+      "id": "engine",
+      "category": "repair",
+      "title": "Капитальный ремонт двигателей (ДВС)",
+      "price": 8000,
+      "pricePrefix": "от",
+      "duration": "от 1 дня",
+      "badge": "ВСЕ МАРКИ",
+      "desc": "Полная разборка и восстановление бензиновых и дизельных моторов: расточка блока, гильзовка, замена поршневых колец, шлифовка коленвала, ремонт ГБЦ и замена цепей/ремней ГРМ.",
+      "points": [
+        "Эндоскопия цилиндров и замер компрессии",
+        "Замена маслосъемных колпачков и клапанов ГБЦ",
+        "Точный подбор вкладышей и поршневой группы",
+        "Опрессовка системы охлаждения и пусковой тест"
+      ]
+    },
+    {
+      "id": "diag",
+      "category": "diagnostics",
+      "title": "Компьютерная и выездная диагностика",
+      "price": 700,
+      "pricePrefix": "от",
+      "duration": "20 мин",
+      "badge": "ЕСТЬ ВЫЕЗД",
+      "desc": "Углубленное сканирование электронных систем на дилерских мультимарочных сканерах. Возможность выезда мастера с оборудованием к автомобилю по городу Канаш.",
+      "points": [
+        "Чтение и расшифровка кодов неисправностей ЭБУ",
+        "Проверка датчиков кислорода, MAF и зажигания в динамике",
+        "Тестирование генератора и системы зарядки АКБ",
+        "Оперативный выезд по Канашу при невозможности завести авто"
+      ]
+    },
+    {
+      "id": "chiptuning",
+      "category": "tuning",
+      "title": "Прошивка ЭБУ и удаление катализатора",
+      "price": 3500,
+      "pricePrefix": "от",
+      "duration": "60 мин",
+      "badge": "ПРИРОСТ СИЛ",
+      "desc": "Профессиональный чип-тюнинг (Stage 1), перевод на нормы Евро-2, отключение вихревых заслонок и клапана EGR. Установка пламегасителей из нержавеющей стали с аккуратной аргоновой сваркой.",
+      "points": [
+        "Безопасная калибровка заводской прошивки без потери ресурса",
+        "Улучшение отклика педали газа и эластичности мотора",
+        "Удаление разрушенного катализатора без запаха в салоне",
+        "Пожизненная гарантия на сварочные швы пламегасителя"
+      ]
+    },
+    {
+      "id": "oil_trans",
+      "category": "maintenance",
+      "title": "Аппаратная замена масла в АКПП и ТО",
+      "price": 900,
+      "pricePrefix": "от",
+      "duration": "35 мин",
+      "badge": "100% ОБНОВЛЕНИЕ",
+      "desc": "Полное замещение трансмиссионной жидкости через специальную автоматическую станцию с визуальным контролем чистоты потока, а также плановое регламентное обслуживание ДВС.",
+      "points": [
+        "Вытеснение 100% старого масла из гидротрансформатора",
+        "Снятие поддона, очистка магнитов от стружки",
+        "Установка нового фильтра АКПП и оригинальной прокладки",
+        "Точный контроль уровня при рабочей температуре трансмиссии"
+      ]
+    }
+  ],
+  "mileageRadar": {
+    "title": "Интерактивный радар ТО по пробегу",
+    "subtitle": "Выберите класс вашего автомобиля и пройденный километраж. Система сформирует заводской перечень процедур, рассчитает фиксированную цену и позволит забронировать свободный пост на Чкалова, 2 в 1 клик.",
+    "carClasses": [
+      { "id": "domestic", "name": "Lada / Отечественные", "multiplier": 1.0 },
+      { "id": "asia", "name": "Корея / Япония / Китай", "multiplier": 1.18 },
+      { "id": "europe", "name": "VAG / Германия / Европа", "multiplier": 1.35 }
+    ],
+    "checkpoints": [
+      {
+        "mileage": "15 000 км",
+        "kmValue": 15000,
+        "label": "Базовое ТО-1",
+        "estimatedHours": "1.0 ч",
+        "basePrice": 3200,
+        "operations": [
+          { "name": "Замена моторного масла по заводскому допуску", "required": true },
+          { "name": "Замена масляного фильтра и уплотнительной шайбы", "required": true },
+          { "name": "Замена воздушного и салонного фильтров", "required": true },
+          { "name": "Осмотр ходовой части и тормозных колодок на подъемнике", "required": true },
+          { "name": "Проверка уровня технических жидкостей (ГУР, тормозная, антифриз)", "required": true },
+          { "name": "Экспресс-проверка углов сход-развала на 3D стенде", "required": false }
+        ]
+      },
+      {
+        "mileage": "30 000 км",
+        "kmValue": 30000,
+        "label": "Расширенное ТО-2",
+        "estimatedHours": "1.5 ч",
+        "basePrice": 5600,
+        "operations": [
+          { "name": "Все регламентные операции базового ТО-1", "required": true },
+          { "name": "Замена свечей зажигания с калибровкой зазоров", "required": true },
+          { "name": "Компьютерная диагностика электронных блоков на сканере", "required": true },
+          { "name": "Ревизия тормозных суппортов и толщины дисков", "required": true },
+          { "name": "Проверка состояния и натяжения ремней навесного оборудования", "required": true },
+          { "name": "Смазка дверных петель, замков и клемм АКБ", "required": false }
+        ]
+      },
+      {
+        "mileage": "60 000 км",
+        "kmValue": 60000,
+        "label": "Капитальное регламентное ТО-4",
+        "estimatedHours": "2.5 ч",
+        "basePrice": 9800,
+        "operations": [
+          { "name": "Полный комплекс операций ТО-1 и ТО-2", "required": true },
+          { "name": "Аппаратная замена тормозной жидкости (DOT-4)", "required": true },
+          { "name": "Замена охлаждающей жидкости (антифриз)", "required": true },
+          { "name": "Частичная или полная замена масла в АКПП/МКПП", "required": true },
+          { "name": "Проверка углов установки колес на 3D сход-развале", "required": true },
+          { "name": "Промывка дроссельного узла со снятием и адаптацией", "required": false }
+        ]
+      },
+      {
+        "mileage": "90 000 км",
+        "kmValue": 90000,
+        "label": "Большое ТО-6 (ГРМ & Навесное)",
+        "estimatedHours": "3.5 ч",
+        "basePrice": 14500,
+        "operations": [
+          { "name": "Полный регламент ТО-1, ТО-2 и ТО-4", "required": true },
+          { "name": "Замена ремня/цепи ГРМ с натяжными роликами и помпой", "required": true },
+          { "name": "Замена приводного ремня генератора и натяжителя", "required": true },
+          { "name": "Промывка топливных форсунок инжектора", "required": false },
+          { "name": "Замер компрессии в цилиндрах двигателя", "required": true },
+          { "name": "Полная диагностика трансмиссии на подъемнике", "required": true }
+        ]
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "author": "Михаил Васильев",
+      "rating": 5,
+      "date": "1 месяц назад",
+      "source": "Яндекс Карты",
+      "text": "Делал сход-развал на Чкалова после замены рулевых наконечников. Машину никуда не тянет, руль стоит идеально ровно. Сделали быстро, мастер всё наглядно показал на мониторе 3D-стенда. Отличный сервис!"
+    },
+    {
+      "author": "Сергей Григорьев",
+      "rating": 5,
+      "date": "3 недели назад",
+      "source": "Яндекс Карты",
+      "text": "Качественно отремонтировали автоматическую коробку передач. Цены не завышают, необходимые детали нашли сами. Грамотные ребята, рекомендую автосервис на Чкалова 2."
+    },
+    {
+      "author": "Алексей Николаев",
+      "rating": 4,
+      "date": "2 недели назад",
+      "source": "Яндекс Карты",
+      "text": "Регулярно заезжаю на замену масла и диагностику. Всегда всё вовремя, без очередей по предварительной записи. Вежливое отношение мастеров и порядок в боксах. 5 из 5."
+    }
+  ],
+  "standards": [
+    {
+      "step": "01",
+      "title": "Фиксированная смета",
+      "desc": "Согласовываем точную стоимость работ и расходников ДО начала ремонта. Без скрытых наценок и сюрпризов при получении авто."
+    },
+    {
+      "step": "02",
+      "title": "Открытая ремзона",
+      "desc": "Свободный доступ в бокс к подъёмнику и стенду сход-развала. Вы можете лично наблюдать за ходом работ или ожидать в комфортной зоне."
+    },
+    {
+      "step": "03",
+      "title": "Возврат старых деталей",
+      "desc": "Все заменённые запчасти, снятые расходники и заводские коробки аккуратно возвращаем в багажник для вашего контроля."
+    },
+    {
+      "step": "04",
+      "title": "Гарантия 12 месяцев",
+      "desc": "Официальный заказ-наряд с печатью автосервиса на Чкалова, 2. Фиксированная гарантия на выполненные работы и детали."
+    }
+  ]
+}
+;
+  </script>
+  <script src="js/mileage-radar.js"></script>
+  <script src="js/engine.js"></script>
+</body>
+</html>
