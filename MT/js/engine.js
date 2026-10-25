@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderServices(appData);
   renderRadarControls(appData);
   renderReviews(appData);
-  renderSpareParts(appData);
+  renderStandards(appData);
   initKitchenClock(appData);
 
   // Initialize Interactive Mileage Radar
@@ -194,22 +194,30 @@ function renderReviews(data) {
   `).join('');
 }
 
-function renderSpareParts(data) {
-  const p = data.spareParts;
-  if (!p) return;
+function renderStandards(data) {
+  const container = document.getElementById('standardsGrid');
+  if (!container || !data.standards) return;
 
-  const descEl = document.getElementById('sparePartsDesc');
-  const advEl = document.getElementById('sparePartsAdvantages');
-
-  if (descEl) descEl.textContent = p.desc;
-  if (advEl && p.advantages) {
-    advEl.innerHTML = p.advantages.map(a => `
-      <li class="flex items-start gap-2.5 text-xs text-textMuted font-mono">
-        <span class="material-symbols-outlined text-accent text-sm mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-        <span>${a}</span>
-      </li>
-    `).join('');
-  }
+  container.innerHTML = data.standards.map((st, idx) => `
+    <div class="spotlight-card reveal-init delay-${idx + 1} bg-bgContainer border border-border p-6 rounded flex flex-col justify-between group hover:border-accent/40 transition-all duration-300">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-mono text-xs text-accent font-bold tracking-wider">${st.step}</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+        </div>
+        <h3 class="text-base font-bold text-white group-hover:text-accent transition-colors mb-2.5">
+          ${st.title}
+        </h3>
+        <p class="text-xs text-textMuted leading-relaxed">
+          ${st.desc}
+        </p>
+      </div>
+      <div class="pt-4 mt-6 border-t border-border/60 flex items-center gap-2 text-[11px] font-mono text-textDim group-hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-sm text-accent">verified</span>
+        <span>Стандарт сервиса</span>
+      </div>
+    </div>
+  `).join('');
 }
 
 function initKitchenClock(data) {

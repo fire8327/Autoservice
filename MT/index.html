@@ -107,7 +107,7 @@
         <a href="#radar" class="hover:text-accent text-accent font-bold transition-colors py-1 flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Радар ТО
         </a>
-        <a href="#parts" class="hover:text-accent transition-colors py-1">Склад запчастей</a>
+        <a href="#standards" class="hover:text-accent transition-colors py-1">Стандарты</a>
         <a href="#reviews" class="hover:text-accent transition-colors py-1">Отзывы (5.0)</a>
         <a href="#location" class="hover:text-accent transition-colors py-1">Контакты</a>
       </nav>
@@ -137,7 +137,7 @@
       <a href="#radar" class="block py-2 text-accent font-bold flex items-center gap-2">
         <span class="w-1.5 h-1.5 rounded-full bg-accent"></span> Интерактивный калькулятор ТО
       </a>
-      <a href="#parts" class="block py-2 text-white hover:text-accent">Магазин запчастей и автостёкла</a>
+      <a href="#standards" class="block py-2 text-white hover:text-accent">Стандарты честного сервиса</a>
       <a href="#reviews" class="block py-2 text-white hover:text-accent">Отзывы Яндекс Карт (5.0)</a>
       <a href="#location" class="block py-2 text-white hover:text-accent">Контакты и карта проезда</a>
       <div class="pt-2 border-t border-border flex items-center justify-between">
@@ -369,62 +369,25 @@
       </div>
     </section>
 
-    <!-- PARTS WAREHOUSE & AUTO GLASS SECTION -->
-    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-border grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-init" id="parts">
-      <div class="space-y-6">
-        <span class="font-mono text-xs text-accent uppercase tracking-widest block flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-          Склад прямо в автокомплексе
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white" data-bind="spareParts.title">
-          Собственный магазин автозапчастей
-        </h2>
-        <p class="text-sm sm:text-base text-textMuted leading-relaxed" id="sparePartsDesc">
-          Вам не нужно тратить время на авторынки или ждать доставку из других городов. 
-          Ходовые расходники хранятся прямо на нашем складе на Кооперативной, 43.
-        </p>
-
-        <ul class="space-y-3 pt-2" id="sparePartsAdvantages">
-          <!-- Dynamically populated from JSON -->
-        </ul>
-
-        <div class="pt-4 flex flex-wrap gap-4">
-          <a data-bind="contacts.whatsapp" href="https://wa.me/79613463777" target="_blank" class="btn-precision-white text-xs uppercase px-6 py-3 offset-box-accent">
-            <span class="material-symbols-outlined text-sm text-accent">search</span>
-            Проверить наличие по VIN
-          </a>
-          <a data-bind="contacts.telegram" href="https://t.me/mt_avtokompleks" target="_blank" class="btn-precision-ghost text-xs uppercase px-6 py-3">
-            Канал с поступлениями
-          </a>
+    <!-- STANDARDS OF SERVICE SECTION -->
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 lg:px-8 py-20 border-b border-border reveal-init" id="standards">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-xs text-accent uppercase tracking-widest block mb-2 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Прозрачный регламент
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-white">
+            Стандарты честного сервиса
+          </h2>
         </div>
+        <p class="text-sm text-textMuted max-w-md">
+          Никаких навязанных услуг и скрытых переплат. Прозрачные правила работы, подтвержденные сотнями отзывов клиентов.
+        </p>
       </div>
 
-      <!-- Technical Card Component -->
-      <div class="bg-bgContainer border border-border p-6 sm:p-8 rounded space-y-6">
-        <div class="flex items-center justify-between pb-4 border-b border-border">
-          <span class="font-mono text-xs uppercase text-accent font-bold flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            СЕРВИС АВТОСТЁКОЛ
-          </span>
-          <span class="font-mono text-xs text-statusOk bg-statusOk/10 px-2.5 py-0.5 rounded border border-statusOk/30 font-bold">В НАЛИЧИИ</span>
-        </div>
-        <h3 class="text-xl font-bold text-white">
-          Вклейка и замена автостёкол в Канаше
-        </h3>
-        <p class="text-xs text-textMuted leading-relaxed">
-          Установка лобовых, задних и боковых стекол на легковые автомобили и коммерческий транспорт. 
-          Работаем только с европейским полиуретановым клеем высокой адгезии. Выдача автомобиля через 60 минут после монтажа.
-        </p>
-        <div class="grid grid-cols-2 gap-4 font-mono text-xs">
-          <div class="bg-bgContainerLow p-3 border border-border rounded">
-            <span class="text-textDim text-[10px] block uppercase">Срок готовности</span>
-            <span class="text-white font-bold">от 60 минут</span>
-          </div>
-          <div class="bg-bgContainerLow p-3 border border-border rounded">
-            <span class="text-textDim text-[10px] block uppercase">Гарантия на шов</span>
-            <span class="text-accent font-bold">Пожизненная</span>
-          </div>
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="standardsGrid">
+        <!-- Dynamically populated from JSON by engine.js -->
       </div>
     </section>
 
@@ -538,7 +501,7 @@
       <div class="flex flex-wrap items-center justify-center gap-6 text-textMuted">
         <a href="#services" class="hover:text-accent transition-colors">Услуги</a>
         <a href="#radar" class="hover:text-accent transition-colors">Радар ТО</a>
-        <a href="#parts" class="hover:text-accent transition-colors">Запчасти</a>
+        <a href="#standards" class="hover:text-accent transition-colors">Стандарты</a>
         <a href="#reviews" class="hover:text-accent transition-colors">Отзывы (5.0)</a>
         <a href="tel:+79613463777" class="text-accent hover:underline font-bold">+7 (961) 346-37-77</a>
       </div>
