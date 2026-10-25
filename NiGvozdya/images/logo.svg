@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="tireGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FB923C" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Base Background -->
+  <rect width="120" height="120" rx="20" fill="#0D0E12"/>
+  
+  <!-- Outer Glow Ring -->
+  <circle cx="60" cy="60" r="54" fill="url(#tireGlow)"/>
+  <circle cx="60" cy="60" r="50" stroke="url(#rimGrad)" stroke-width="3" fill="#14161E"/>
+  
+  <!-- Tire Tread Teeth (12 teeth around circle) -->
+  <g stroke="#F97316" stroke-width="4" stroke-linecap="round">
+    <line x1="60" y1="13" x2="60" y2="20"/>
+    <line x1="60" y1="100" x2="60" y2="107"/>
+    <line x1="13" y1="60" x2="20" y2="60"/>
+    <line x1="100" y1="60" x2="107" y2="60"/>
+    <line x1="27" y1="27" x2="32" y2="32"/>
+    <line x1="88" y1="88" x2="93" y2="93"/>
+    <line x1="27" y1="93" x2="32" y2="88"/>
+    <line x1="88" y1="32" x2="93" y2="27"/>
+  </g>
+
+  <!-- Inner Wheel Rim -->
+  <circle cx="60" cy="60" r="34" stroke="#262A36" stroke-width="2.5" fill="#0A0B0E"/>
+
+  <!-- Crossed Nails Graphic with Red/Orange Glow (Symbol of "Ни гвоздя!") -->
+  <!-- Left nail: angled with tip pointing down-right -->
+  <g transform="translate(60,60) rotate(45) translate(-60,-60)">
+    <!-- Nail Head -->
+    <rect x="52" y="30" width="16" height="4" rx="1.5" fill="#FFFFFF"/>
+    <!-- Nail Body -->
+    <rect x="58" y="34" width="4" height="46" fill="#FFFFFF"/>
+    <!-- Nail Point -->
+    <polygon points="58,80 62,80 60,88" fill="#FFFFFF"/>
+  </g>
+  <!-- Crossed Diagonal Ban Bar (Prohibition of nail: "НИКАКИХ ГВОЗДЕЙ") -->
+  <g transform="translate(60,60) rotate(-45) translate(-60,-60)">
+    <line x1="28" y1="60" x2="92" y2="60" stroke="#F97316" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Center Hex Nut Hub -->
+  <polygon points="60,52 67,56 67,64 60,68 53,64 53,56" fill="#F97316"/>
+  <circle cx="60" cy="60" r="3" fill="#0D0E12"/>
+</svg>
