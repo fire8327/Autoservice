@@ -22,29 +22,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
+  const safeRun = (name, fn) => {
+    try {
+      fn();
+    } catch (e) {
+      console.warn('[Engine] Warning in ' + name + ':', e);
+    }
+  };
+
   // Hydrate DOM with data
-  hydrateBrandAndContacts(appData);
-  renderMetrics(appData);
-  renderServices(appData);
-  renderRadarControls(appData);
-  renderReviews(appData);
-  renderStandards(appData);
-  initKitchenClock(appData);
+  safeRun('hydrateBrandAndContacts', () => hydrateBrandAndContacts(appData));
+  safeRun('renderMetrics', () => renderMetrics(appData));
+  safeRun('renderServices', () => renderServices(appData));
+  safeRun('renderRadarControls', () => renderRadarControls(appData));
+  safeRun('renderReviews', () => renderReviews(appData));
+  safeRun('renderStandards', () => renderStandards(appData));
+  safeRun('initKitchenClock', () => initKitchenClock(appData));
 
   // Initialize Interactive Mileage Radar
   if (window.MileageRadarEngine) {
-    new window.MileageRadarEngine(appData);
+    safeRun('MileageRadarEngine', () => new window.MileageRadarEngine(appData));
   }
 
   // Mobile menu toggle
-  initMobileNav();
+  safeRun('initMobileNav', () => initMobileNav());
 
   // Initialize Advanced Automotive Animations
-  initScrollReveal();
-  initMetricCounters();
-  initSpotlightCards();
-  init3DTilt();
-  initRippleEffect();
+  safeRun('initScrollReveal', () => initScrollReveal());
+  safeRun('initMetricCounters', () => initMetricCounters());
+  safeRun('initSpotlightCards', () => initSpotlightCards());
+  safeRun('init3DTilt', () => init3DTilt());
+  safeRun('initRippleEffect', () => initRippleEffect());
 });
 
 function hydrateBrandAndContacts(data) {
@@ -98,17 +106,24 @@ function renderMetrics(data) {
 
 function renderServices(data) {
   const container = document.getElementById('servicesGrid');
-  if (!container) return;
+  if (!container || !data.services) return;
 
-  container.innerHTML = data.services.map((s, idx) => `
+  container.innerHTML = data.services.map((s, idx) => {
+    const pointsList = (s.points || s.operations || []);
+    const durationText = s.duration || s.estimatedHours || '20 мин';
+    const priceFormatted = typeof s.price === 'number'
+      ? `${s.pricePrefix ? s.pricePrefix + ' ' : ''}${s.price.toLocaleString('ru-RU')} ₽`
+      : (s.price || 'по запросу');
+
+    return `
     <article class="service-card spotlight-card reveal-init delay-${(idx % 3) + 1} p-6 flex flex-col justify-between group">
       <div>
         <div class="flex items-center justify-between mb-4">
           <span class="service-badge font-mono text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-accent/5 border border-accent/20 text-accent rounded-sm transition-colors">
-            ${s.badge}
+            ${s.badge || 'СЕРВИС'}
           </span>
           <span class="font-mono text-xs text-textDim flex items-center gap-1">
-            <span class="material-symbols-outlined text-xs text-accent">timer</span> ${s.duration}
+            <span class="material-symbols-outlined text-xs text-accent">timer</span> ${durationText}
           </span>
         </div>
         
@@ -121,9 +136,9 @@ function renderServices(data) {
         </p>
 
         <ul class="space-y-1.5 mb-6 text-xs text-textMuted font-mono">
-          ${s.points.map(pt => `
+          ${pointsList.map(pt => `
             <li class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span>
               <span>${pt}</span>
             </li>
           `).join('')}
@@ -133,14 +148,15 @@ function renderServices(data) {
       <div class="pt-4 border-t border-border flex items-center justify-between">
         <div>
           <span class="text-[10px] text-textDim uppercase font-mono block">Стоимость работ</span>
-          <span class="text-xl font-bold font-mono text-white">${s.pricePrefix ? s.pricePrefix + ' ' : ''}${s.price.toLocaleString('ru-RU')} ₽</span>
+          <span class="text-xl font-bold font-mono text-white">${priceFormatted}</span>
         </div>
         <a href="#radar" class="btn-precision-ghost text-xs py-2 px-3">
-          В наряд ТО
+          Рассчитать
         </a>
       </div>
     </article>
-  `).join('');
+    `;
+  }).join('');
 }
 
 function renderRadarControls(data) {
@@ -151,7 +167,7 @@ function renderRadarControls(data) {
     stepperContainer.innerHTML = data.mileageRadar.checkpoints.map((cp, idx) => `
       <button type="button" class="checkpoint-step-btn ${idx === 0 ? 'active' : ''}" data-index="${idx}">
         <div class="flex items-center justify-between">
-          <span class="block text-sm font-bold text-white">${cp.mileage}</span>
+          <span class="block text-sm font-bold text-white">${cp.mileage || cp.step || cp.label}</span>
           <span class="w-1.5 h-1.5 rounded-full ${idx === 0 ? 'bg-accent' : 'bg-transparent'} step-dot"></span>
         </div>
         <span class="text-[11px] text-textDim block mt-0.5">${cp.label}</span>

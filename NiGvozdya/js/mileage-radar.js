@@ -106,12 +106,12 @@ class MileageRadarEngine {
     // 3. Calculate price and duration
     const finalPrice = Math.round(cp.basePrice * cc.multiplier);
 
-    if (this.radarBadge) this.radarBadge.textContent = `${cp.label} • ${cp.mileage}`;
+    if (this.radarBadge) this.radarBadge.textContent = `${cp.label} • ${cp.mileage || cp.step || ""}`;
     if (this.radarHours) this.radarHours.textContent = cp.estimatedHours;
     this.animatePrice(finalPrice);
 
     if (this.radarSummaryText) {
-      this.radarSummaryText.textContent = `Класс: ${cc.name} • Регламент ${cp.mileage} • Срок: ~${cp.estimatedHours}`;
+      this.radarSummaryText.textContent = `Класс: ${cc.name} • Регламент ${cp.mileage || cp.step || cp.label} • Срок: ~${cp.estimatedHours}`;
     }
 
     // 4. Render checklist operations with staggered luxury animation
@@ -130,10 +130,12 @@ class MileageRadarEngine {
     }
 
     // 5. Update WhatsApp and Telegram direct links
-    const phoneRaw = this.contacts.phonePrimaryRaw.replace(/[^0-9]/g, '');
-    let msg = `Здравствуйте! Хочу записаться на ТО в МТ Автокомплекс (Канаш, Кооперативная, 43):\n\n`;
+    const phoneRaw = (this.contacts.phonePrimaryRaw || this.contacts.phonePrimary || '').replace(/[^0-9]/g, '');
+    const brandName = (this.brandData && (this.brandData.shortName || this.brandData.name)) || 'сервис';
+    const address = (this.contacts && (this.contacts.addressShort || this.contacts.address)) || '';
+    let msg = `Здравствуйте! Хочу записаться на обслуживание в ${brandName} (${address}):\n\n`;
     msg += `🚗 Класс авто: ${cc.name}\n`;
-    msg += `📍 Регламент пробега: ${cp.mileage} (${cp.label})\n`;
+    msg += `📍 Регламент: ${cp.mileage || cp.step || cp.label} (${cp.label})\n`;
     msg += `⏱ Расчетное время: ${cp.estimatedHours}\n`;
     msg += `💰 Фиксированная стоимость: ${finalPrice.toLocaleString('ru-RU')} ₽\n\n`;
     msg += `Подскажите, на какое время сегодня/завтра есть свободный подъемник?`;
